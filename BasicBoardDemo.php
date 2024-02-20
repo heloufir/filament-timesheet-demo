@@ -26,6 +26,17 @@ class BasicBoardDemo extends TimesheetBoard
 
     protected ?string $model = TimeRegistration::class;
 
+    protected function getActions(): array
+    {
+        return array_merge([
+            Action::make('source')
+                ->color('gray')
+                ->icon('heroicon-m-code-bracket')
+                ->label('View on Github')
+                ->url('https://github.com/heloufir/filament-timesheet-demo/blob/main/BasicBoardDemo.php')
+        ], Parent::getActions());
+    }
+
     protected function query(Carbon $start, Carbon $end): Builder
     {
         $query = TimeRegistration::query();
